@@ -23,8 +23,13 @@ import java.io.File;
 import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.util.DefaultIndenter;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.core.util.Separators;
+import com.fasterxml.jackson.core.util.Separators.Spacing;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 /**
  * Strips comments from a single JSON file.
@@ -34,6 +39,11 @@ class JsonCommentStripper {
   private static final ObjectMapper STRICT_MAPPER = new ObjectMapper();
   private static final ObjectMapper LENIENT_MAPPER = new ObjectMapper()
       .enable(JsonParser.Feature.ALLOW_COMMENTS);
+  private static final ObjectWriter PRETTY_WRITER = STRICT_MAPPER.writer(new DefaultPrettyPrinter()
+      .withArrayIndenter(new DefaultIndenter("  ", "\n"))
+      .withObjectIndenter(new DefaultIndenter("  ", "\n"))
+      .withSeparators(Separators.createDefaultInstance()
+          .withObjectFieldValueSpacing(Spacing.AFTER)));
 
   private final File file;
 
@@ -61,7 +71,7 @@ class JsonCommentStripper {
    */
   void stripComments() throws IOException {
     JsonNode tree = LENIENT_MAPPER.readTree(file);
-    STRICT_MAPPER.writeValue(file, tree);
+    PRETTY_WRITER.writeValue(file, tree);
   }
 
 }

@@ -1,4 +1,4 @@
-def baseFileName = "target/sling-initial-content-json-strip-comments-maven-plugin-transform-bundle-1.0.0-SNAPSHOT"
+def baseFileName = "target/sling-initial-content-json-strip-comments-maven-plugin-test-bundle-1.0.0-SNAPSHOT"
 
 def expectedXmlContentSample = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:crx="http://www.day.com/crx/1.0" xmlns:customNamespace="http://customnamespace.org" xmlns:dam="http://www.day.com/dam/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:oak="http://jackrabbit.apache.org/oak/ns/1.0" xmlns:rep="internal" xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:slingevent="http://sling.apache.org/jcr/event/1.0" xmlns:wcmio="http://wcm.io/ns" customNamespace:prop2="value2" jcr:primaryType="nt:unstructure" prop1="value1">
@@ -42,17 +42,9 @@ def expectedXmlContentDialogSnippet = """<?xml version="1.0" encoding="UTF-8" st
 </jcr:root>
 """
 
-// original bundle
+// bundle
 File jarFile = new File(basedir, "${baseFileName}.jar")
 assert jarFile.exists()
-
-// transformed bundle
-File jarBundleFile = new File(basedir, "${baseFileName}-bundle.jar")
-assert jarBundleFile.exists()
-
-// extracted content package
-File contentPackageFile = new File(basedir, "${baseFileName}-content.zip")
-assert contentPackageFile.exists()
 
 // validate XML output
 try (zipFile = new java.util.zip.ZipFile(contentPackageFile)) {
