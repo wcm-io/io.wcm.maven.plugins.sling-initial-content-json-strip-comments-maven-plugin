@@ -85,7 +85,7 @@ public class JsonStripCommentsMojo extends AbstractMojo {
     File file = path.toFile();
     JsonCommentStripper stripper = new JsonCommentStripper(file);
     if (stripper.hasComments()) {
-      log.info("Stripping comments from: {}", file.getPath());
+      log.info("Stripping comments from: {}", resources.toPath().relativize(path));
       try {
         stripper.stripComments();
       }
