@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  wcm.io
+  %%
+  Copyright (C) 2021 wcm.io
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+
+<document xmlns="http://maven.apache.org/changes/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/changes/2.0.0 https://maven.apache.org/xsd/changes-2.0.0.xsd">
+  <body>
+
+    <release version="1.1.8" date="2025-04-01">
+      <action type="update" dev="sseifert" issue="34">
+        Mark plugin as deprecated. Output a warning message if used in a project.
+      </action>
+    </release>
+
+    <release version="1.1.6" date="2025-03-31">
+      <action type="update" dev="sseifert" issue="21">
+        Switch to Johnzon 2.x and jakarta.json.
+      </action>
+    </release>
+
+    <release version="1.1.4" date="2024-01-25">
+      <action type="update" dev="sseifert">
+        Update to AEM Content Package Builder 1.7.4 to ensure folder path ZIP file entries are created.
+      </action>
+    </release>
+
+    <release version="1.1.2" date="2023-12-13">
+      <action type="update" dev="sseifert">
+        Switch to Java 11 as minimum version.
+      </action>
+      <action type="update" dev="sseifert" issue="16">
+        Ensure ordering of element children in JSON files is kept intact.
+      </action>
+    </release>
+
+    <release version="1.1.0" date="2022-01-26">
+      <action type="add" dev="sseifert">
+        Add "xmlNamspaces" property to allow to add namespace mappings required for package building.
+      </action>
+      <action type="update" dev="sseifert">
+        Declare maven core dependencies as provided.
+      </action>
+    </release>
+
+    <release version="1.0.0" date="2021-03-25">
+      <action type="add" dev="sseifert">
+        Initial release.
+      </action>
+    </release>
+
+  </body>
+</document>
