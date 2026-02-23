@@ -20,7 +20,12 @@
 package io.wcm.maven.plugins.slinginitialcontentjsonstripcomments;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -60,8 +65,34 @@ public class JsonStripCommentsMojo extends AbstractMojo {
       return;
     }
 
-    // TODO: implement
+    if (!resources.isDirectory()) {
+      log.debug("Resources directory does not exist or is not a directory: {}", resources);
+      return;
+    }
 
+    try (var stream = Files.walk(resources.toPath())) {
+      stream
+          .filter(Files::isRegularFile)
+          .filter(path -> FilenameUtils.isExtension(path.getFileName().toString(), "json"))
+          .forEach(this::processFile);
+    }
+    catch (UncheckedIOException | IOException ex) {
+      throw new MojoExecutionException("Failed process JSON files in : " + resources, ex);
+    }
+  }
+
+  private void processFile(Path path) {
+    File file = path.toFile();
+    JsonCommentStripper stripper = new JsonCommentStripper(file);
+    if (stripper.hasComments()) {
+      log.info("Stripping comments from: {}", file.getPath());
+      try {
+        stripper.stripComments();
+      }
+      catch (IOException ex) {
+        throw new UncheckedIOException("Failed to strip comments from: " + file.getPath(), ex);
+      }
+    }
   }
 
 }
