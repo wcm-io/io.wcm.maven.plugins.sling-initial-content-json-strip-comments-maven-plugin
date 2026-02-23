@@ -20,11 +20,21 @@
 package io.wcm.maven.plugins.slinginitialcontentjsonstripcomments;
 
 import java.io.File;
+import java.io.IOException;
+
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Strips comments from a single JSON file.
  */
 class JsonCommentStripper {
+
+  private static final ObjectMapper STRICT_MAPPER = new ObjectMapper();
+  private static final ObjectMapper LENIENT_MAPPER = new ObjectMapper()
+      .enable(JsonParser.Feature.ALLOW_COMMENTS);
 
   private final File file;
 
@@ -32,15 +42,27 @@ class JsonCommentStripper {
     this.file = file;
   }
 
+  /**
+   * Returns {@code true} if the file cannot be parsed as strict JSON (i.e. it contains comments or other
+   * non-standard constructs that require the lenient parser).
+   */
   boolean hasComments() {
-    // Implement logic to check if the file contains comments (e.g., lines starting with // or /* */)
-    // This is a placeholder implementation and should be replaced with actual comment detection logic.
-    return false;
+    try {
+      STRICT_MAPPER.readTree(file);
+      return false;
+    }
+    catch (IOException ex) {
+      return true;
+    }
   }
 
-  void stripComments() {
-    // Implement logic to read the file, remove comments, and write the cleaned content back to the file.
-    // This is a placeholder implementation and should be replaced with actual comment stripping logic.
+  /**
+   * Reads the file with the lenient Jackson parser (comments allowed), serialises the tree
+   * back to standard JSON and writes it to the same file.
+   */
+  void stripComments() throws IOException {
+    JsonNode tree = LENIENT_MAPPER.readTree(file);
+    STRICT_MAPPER.writeValue(file, tree);
   }
 
 }
