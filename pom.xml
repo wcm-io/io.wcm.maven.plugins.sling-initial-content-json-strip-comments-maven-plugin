@@ -35,7 +35,7 @@
   <packaging>maven-plugin</packaging>
 
   <name>Sling-Initial-Content JSON Strip Comments Maven Plugin</name>
-  <description>Removes all comments from JSON files in Sling-Initial-Content of bundles.</description>
+  <description>Removes all comments from JSON files in Sling-Initial-Content.</description>
   <url>${site.url}/${site.url.module.prefix}/</url>
 
   <scm>
