@@ -4,7 +4,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/io.wcm.maven.plugins/sling-initial-content-json-strip-comments-maven-plugin)](https://repo1.maven.org/maven2/io/wcm/maven/plugins/sling-initial-content-json-strip-comments-maven-plugin)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wcm-io_io.wcm.maven.plugins.sling-initial-content-json-strip-comments-maven-plugin&metric=coverage)](https://sonarcloud.io/summary/new_code?id=wcm-io_io.wcm.maven.plugins.sling-initial-content-json-strip-comments-maven-plugin)
 
-Removes all comments from JSON files in Sling-Initial-Conten.
+Removes all comments from JSON files in Sling-Initial-Content.
 
 Documentation: https://wcm.io/tooling/maven/plugins/sling-initial-content-json-strip-comments-maven-plugin/<br/>
 Issues: https://github.com/wcm-io/io.wcm.maven.plugins.sling-initial-content-json-strip-comments-maven-plugin/issues<br/>

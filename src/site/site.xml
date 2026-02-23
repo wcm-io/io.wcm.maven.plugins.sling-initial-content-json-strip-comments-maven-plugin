@@ -29,7 +29,7 @@
       <item name="wcm.io" href="https://wcm.io" />
       <item name="Tooling" href="https://wcm.io/tooling/" />
       <item name="Maven" href="https://wcm.io/tooling/maven/" />
-      <item name="Sling-Initial-Content Transformation Maven Plugin" href="https://wcm.io/tooling/maven/plugins/sling-initial-content-json-strip-comments-maven-plugin/" />
+      <item name="Sling-Initial-Content JSON Strip Comments Maven Plugin" href="https://wcm.io/tooling/maven/plugins/sling-initial-content-json-strip-comments-maven-plugin/" />
     </breadcrumbs>
   </body>
 
