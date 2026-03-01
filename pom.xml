@@ -47,7 +47,7 @@
 
   <properties>
     <site.url.module.prefix>tooling/maven/plugins/sling-initial-content-json-strip-comments-maven-plugin</site.url.module.prefix>
-    <maven.version>3.3.9</maven.version>
+    <maven.version>3.9.12</maven.version>
 
     <!-- Enable reproducible builds -->
     <project.build.outputTimestamp>2026-02-23T16:20:36Z</project.build.outputTimestamp>
