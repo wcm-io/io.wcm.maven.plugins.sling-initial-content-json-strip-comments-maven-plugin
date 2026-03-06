@@ -38,12 +38,12 @@ class JsonCommentStripper {
 
   private static final ObjectMapper STRICT_MAPPER = new ObjectMapper();
   private static final ObjectMapper LENIENT_MAPPER = new ObjectMapper()
-      .enable(JsonParser.Feature.ALLOW_COMMENTS);
+    .enable(JsonParser.Feature.ALLOW_COMMENTS);
   private static final ObjectWriter PRETTY_WRITER = STRICT_MAPPER.writer(new DefaultPrettyPrinter()
-      .withArrayIndenter(new DefaultIndenter("  ", "\n"))
-      .withObjectIndenter(new DefaultIndenter("  ", "\n"))
-      .withSeparators(Separators.createDefaultInstance()
-          .withObjectFieldValueSpacing(Spacing.AFTER)));
+    .withArrayIndenter(new DefaultIndenter("  ", "\n"))
+    .withObjectIndenter(new DefaultIndenter("  ", "\n"))
+    .withSeparators(Separators.createDefaultInstance()
+      .withObjectFieldValueSpacing(Spacing.AFTER)));
 
   private final File file;
 

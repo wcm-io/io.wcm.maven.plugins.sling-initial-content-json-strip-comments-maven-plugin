@@ -72,9 +72,9 @@ public class JsonStripCommentsMojo extends AbstractMojo {
 
     try (var stream = Files.walk(resources.toPath())) {
       stream
-          .filter(Files::isRegularFile)
-          .filter(path -> FilenameUtils.isExtension(path.getFileName().toString(), "json"))
-          .forEach(this::processFile);
+        .filter(Files::isRegularFile)
+        .filter(path -> FilenameUtils.isExtension(path.getFileName().toString(), "json"))
+        .forEach(this::processFile);
     }
     catch (UncheckedIOException | IOException ex) {
       throw new MojoExecutionException("Failed process JSON files in : " + resources, ex);
